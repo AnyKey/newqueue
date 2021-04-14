@@ -1,11 +1,8 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/streadway/amqp"
 	"log"
-	"newqueue/model"
 	"os"
 )
 
@@ -20,11 +17,11 @@ func main() {
 
 	q, err := ch.QueueDeclare(
 		"main_queue", // name
-		false,   // durable
-		false,   // delete when unused
-		false,   // exclusive
-		false,   // no-wait
-		nil,     // arguments
+		false,        // durable
+		false,        // delete when unused
+		false,        // exclusive
+		false,        // no-wait
+		nil,          // arguments
 	)
 	failOnError(err, "Failed to declare a queue")
 
@@ -40,20 +37,20 @@ func main() {
 	failOnError(err, "Failed to register a consumer")
 
 	forever := make(chan bool)
-	f, err := os.OpenFile("log.txt", os.O_APPEND|os.O_WRONLY, 0600)
+	f, err := os.OpenFile("main.log", os.O_APPEND|os.O_WRONLY, 0600)
 	if err != nil {
 		panic(err)
 	}
 	defer f.Close()
 	go func() {
 		for d := range msgs {
-			var res model.LogBody
-			err = json.Unmarshal(d.Body, &res)
-			if err != nil {
-				log.Println(err)
-			}
-			newString  := fmt.Sprintf("name: %v | action: %v | time: %v \n", res.Name, res.Action, res.Time)
-			bytes:=[]byte(newString)
+			//var res model.LogBody
+			//err = json.Unmarshal(d.Body, &res)
+			//if err != nil {
+			//	log.Println(err)
+			//}
+			//newString  := fmt.Sprintf("name: %v | action: %v | time: %v \n", res.Name, res.Action, res.Time)
+			bytes := d.Body
 			_, err = f.Write(bytes)
 			if err != nil {
 				log.Println(err)

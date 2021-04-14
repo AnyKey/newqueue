@@ -1,0 +1,5 @@
+{"name":"Test","action":"/api/track/Slipknot/Liberate","time":"2021-04-13T15:35:06.351980892+03:00"}
+{"name":"Test","action":"/api/genre/Grunge","time":"2021-04-13T15:35:09.390277571+03:00"}
+{"name":"Test","action":"/api/artist/System%20of%20a%20Down","time":"2021-04-13T15:35:11.608984322+03:00"}
+{"name":"Test","action":"/api/artist/System%20of%20a%20Down","time":"2021-04-13T15:45:47.398806663+03:00"}
+{"name":"Test","action":"/api/chart/list","time":"2021-04-13T15:46:13.607541153+03:00"}{"name":"Test","action":"/api/chart/list","time":"2021-04-13T16:49:39.62626322+03:00"}{"name":"Test","action":"/api/artist/System%20of%20a%20Down","time":"2021-04-13T16:49:49.506826905+03:00"}{"name":"Test","action":"/api/genre/Grunge","time":"2021-04-13T16:49:58.509394205+03:00"}
